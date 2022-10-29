@@ -9,5 +9,4 @@ from ev3dev2.sensor.lego import ColorSensor
 def currentColorvalue():
     colors = ColorSensor()
     light=colors.reflected_light_intensity
-    print (light ,"colorsensor")
     return light

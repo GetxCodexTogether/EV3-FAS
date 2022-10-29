@@ -3,23 +3,20 @@ from Linienfolger.motor import*
 from Linienfolger.sensor import*
 
 from time import sleep
-
 from ev3dev2.sensor import INPUT_4
 from ev3dev2.sensor.lego import TouchSensor
 from ev3dev2.sensor.lego import ColorSensor
 from ev3dev2.led import Leds
 from ev3dev2.sound import Sound
 
-# TODO: Add code here
+
 print("Start World")
-# driveonlyleft(70,4)
-driveforever()
+
+motorstart()
 while(1):
-    outleftmotor()
+    outoflinemotor(currentColorvalue())
     print("jaa")
     
-# while(1):
-#     drivebothrot(10,10,0.2)
 
 
 

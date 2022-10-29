@@ -1,35 +1,36 @@
 # Bibliothek Ev3dev for motors
 from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, SpeedPercent, MoveTank
 
-from time import sleep, time
 
-from Linienfolger.sensor import currentColorvalue
 # definition of the motors
 left = LargeMotor(OUTPUT_A)
 right = LargeMotor(OUTPUT_B)
-both = MoveTank(OUTPUT_A, OUTPUT_B)
 
+def motorstart():
+    left.speed_sp = 100
+    left.run_forever()
+    right.speed_sp = 100
+    right.run_forever()
 
-# function to drive
-def driveonlyleft (speedinpercent, rotation):
-    left.on_for_rotations(SpeedPercent(speedinpercent), rotation)
-
-def driveonlyright (speedinpercent, rotation):
-    right.on_for_rotations(SpeedPercent(speedinpercent), rotation)
-
-def drivebothtime (speedinpercentleft, speedinpercentright, time):
-     both.on_for_seconds(SpeedPercent(speedinpercentleft), SpeedPercent(speedinpercentright), time)
-
-def drivebothrot (speedinpercentleft, speedinpercentright, rotation):
-    both.on_for_rotations(SpeedPercent(speedinpercentleft), SpeedPercent(speedinpercentright), rotation)
-
-def driveforever ():
-    left.speed_sp = 1000
+def driveleft (speed):
+    left.speed_sp = speed
     left.run_forever()
 
-def outleftmotor():
-    if(currentColorvalue()> 30):
+def driveright(speed):
+    right.speed_sp = speed
+    right.run_forever()
+
+def outoflinemotor(currentcolor):
+    print(currentcolor)
+    if(currentcolor> 30):
         left.stop(stop_action="hold")
+        driveleft(50)
+    elif(currentcolor < 20):
+        right.stop(stop_action="hold")
+        driveright(50)
+    else:
+        motorstart()
+
  
    
     
