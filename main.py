@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from Linienfolger.motor import*
-from Linienfolger.sensor import*
+from linefollower.motor import*
+from linefollower.sensor import*
 
 from time import sleep
 from ev3dev2.sensor import INPUT_4
