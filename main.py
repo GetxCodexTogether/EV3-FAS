@@ -1,8 +1,17 @@
 #!/usr/bin/env python3
+#fileimport
+"""Check Doxstring"""
+from python.python import * 
 from linefollower.motor import*
 from linefollower.sensor import*
+# Bibimport
 
-from time import sleep
+
+from time import sleep #
+
+testPy()
+
+
 from ev3dev2.sensor import INPUT_4
 from ev3dev2.sensor.lego import TouchSensor
 from ev3dev2.sensor.lego import ColorSensor
@@ -21,17 +30,6 @@ while(1):
 
 
 
-# sound = Sound()
-# sound.speak('Welcome to the E V 3 dev project!')
 
 
 
-# print("Ende World1")
-# def fib(n):
-#     a, b = 0, 1
-#     while a < n:
-#         print(a, end=' ')
-#         a, b = b, a+b
-#     print()
-# fib(1000)
-# print("Hello World")
