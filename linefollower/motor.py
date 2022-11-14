@@ -13,7 +13,7 @@ def linie(current_Sensor_Val):
     full_white = 52
     full_black = 15
     if(lowerlimit <= current_Sensor_Val <= upperlimit):
-        MSteering.on(speed=-30,steering=0)
+        MSteering.on(speed=-50,steering=0)
     else:
         if(full_white<current_Sensor_Val):
             MSteering.on(speed = -30, steering= -80)
