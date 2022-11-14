@@ -1,38 +1,31 @@
-# Bibliothek Ev3dev for motors
-from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, SpeedPercent, MoveTank
+from ev3dev2.motor import LargeMotor, OUTPUT_A,OUTPUT_B, MediumMotor
+from ev3dev2.motor import SpeedDPS, SpeedRPM, SpeedRPS, SpeedDPM,MoveTank,MoveSteering
 
+#def motor_init():
+print("Motor-Init")
+MLeft = LargeMotor(OUTPUT_A)
+MRight = LargeMotor(OUTPUT_B)
+MSteering = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor)
 
-# definition of the motors
-left = LargeMotor(OUTPUT_A)
-right = LargeMotor(OUTPUT_B)
-
-def motorstart():
-    left.speed_sp = 100
-    left.run_forever()
-    right.speed_sp = 100
-    right.run_forever()
-
-def driveleft (speed):
-    left.speed_sp = speed
-    left.run_forever()
-
-def driveright(speed):
-    right.speed_sp = speed
-    right.run_forever()
-
-def outoflinemotor(currentcolor):
-    print(currentcolor)
-    if(currentcolor> 30):
-        left.stop(stop_action="hold")
-        driveleft(50)
-    elif(currentcolor < 20):
-        right.stop(stop_action="hold")
-        driveright(50)
+def linie(current_Sensor_Val):
+    upperlimit = 35
+    lowerlimit = 25
+    full_white = 52
+    full_black = 15
+    if(lowerlimit <= current_Sensor_Val <= upperlimit):
+        MSteering.on(speed=-30,steering=0)
     else:
-        motorstart()
+        if(full_white<current_Sensor_Val):
+            MSteering.on(speed = -30, steering= -80)
+        elif(full_black > current_Sensor_Val):
+            MSteering.on(speed = -30, steering= +80)
+        elif(lowerlimit > current_Sensor_Val):
+            MSteering.on(speed = -30, steering= 40)
+        else:
+            MSteering.on(speed = -30, steering= -40)
 
- 
-   
+
+            
     
     
     

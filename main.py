@@ -1,35 +1,37 @@
 #!/usr/bin/env python3
-#fileimport
-"""Check Doxstring"""
-from python.python import * 
-from linefollower.motor import*
-from linefollower.sensor import*
-# Bibimport
+from time import sleep
+from ev3dev2.button import Button
+
+from linefollower.motor import *
+from linefollower.sensor import *
+#from matplotlib.pyplot import mt
+#import matplotlib.pylab as plt 
+#import numpy as np
+
+#motor_init()
+sensor_init()
+
+# import matplotlib.pylab as plt 
+# import math
+# import numpy as np
+
+# print("Hello World1")
+
+# xpoints = np.array([1, 8])
+# ypoints = np.array([3, 10])
+
+# plt.plot(xpoints, ypoints)
+# plt.show()
+
+import logging
 
 
-from time import sleep #
+# config logging
+logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-testPy()
+logging.debug('Run robot, run!')
 
-
-from ev3dev2.sensor import INPUT_4
-from ev3dev2.sensor.lego import TouchSensor
-from ev3dev2.sensor.lego import ColorSensor
-from ev3dev2.led import Leds
-from ev3dev2.sound import Sound
-
-
-print("Start World")
-
-motorstart()
-while(1):
-    outoflinemotor(currentColorvalue())
-    print("jaa")
+print("Main-Loop")
+while 1:
+    linie(current_color_value())
     
-
-
-
-
-
-
-
