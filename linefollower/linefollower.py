@@ -32,7 +32,7 @@ def linie():
 
 def liniep_controller():
    current_Sensor_Val = SColor.reflected_light_intensity
-   kp=-2.8
+   kp=-3.3
    calibration= 30
    newsteering= kp* (current_Sensor_Val-calibration)
    if(newsteering>100):
