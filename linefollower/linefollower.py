@@ -32,10 +32,14 @@ def linie():
 
 def liniep_controller():
    current_Sensor_Val =SColor.reflected_light_intensity
-   kp=2.6
+   kp=-3.4
    calibration= 30
-   new=current_Sensor_Val-calibration
-   newsteering= kp * new
+   newsteering= kp * (current_Sensor_Val-calibration)
+
+   if(newsteering>100):
+        newsteering=100
+   elif(newsteering<-100):
+        newsteering=-100
    MSteering.on(speed=-50,steering=newsteering)
 
     
