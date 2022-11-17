@@ -7,13 +7,13 @@ from ev3dev2.sensor.lego import ColorSensor
 
 print("Motor/Sensor-Init")
 SColor= ColorSensor()
-current_Sensor_Val =SColor.reflected_light_intensity
 MSteering = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor)
 #MLeft = LargeMotor(OUTPUT_A)
 #MRight = LargeMotor(OUTPUT_B)
 
 
 def linie():
+    current_Sensor_Val =SColor.reflected_light_intensity
     upperlimit = 35
     lowerlimit = 25
     full_white = 52
@@ -31,11 +31,10 @@ def linie():
             MSteering.on(speed = -30, steering= -40)
 
 def liniep_controller():
-   current_Sensor_Val =SColor.reflected_light_intensity
-   kp=-3.4
+   current_Sensor_Val = SColor.reflected_light_intensity
+   kp=-2.8
    calibration= 30
-   newsteering= kp * (current_Sensor_Val-calibration)
-
+   newsteering= kp* (current_Sensor_Val-calibration)
    if(newsteering>100):
         newsteering=100
    elif(newsteering<-100):
