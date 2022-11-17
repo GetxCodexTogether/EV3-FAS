@@ -1,4 +1,4 @@
-from ev3dev2.sensor import INPUT_4
+from ev3dev2.sensor import INPUT_1
 from ev3dev2.sensor.lego import ColorSensor
 SColor= ColorSensor()
 

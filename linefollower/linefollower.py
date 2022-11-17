@@ -1,13 +1,19 @@
+#Init Motor
 from ev3dev2.motor import LargeMotor, OUTPUT_A,OUTPUT_B, MediumMotor
 from ev3dev2.motor import SpeedDPS, SpeedRPM, SpeedRPS, SpeedDPM,MoveTank,MoveSteering
+#Init Sensor
+from ev3dev2.sensor import INPUT_1
+from ev3dev2.sensor.lego import ColorSensor
 
-#def motor_init():
-print("Motor-Init")
-MLeft = LargeMotor(OUTPUT_A)
-MRight = LargeMotor(OUTPUT_B)
+print("Motor/Sensor-Init")
+SColor= ColorSensor()
+current_Sensor_Val =SColor.reflected_light_intensity
 MSteering = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor)
+#MLeft = LargeMotor(OUTPUT_A)
+#MRight = LargeMotor(OUTPUT_B)
 
-def linie(current_Sensor_Val):
+
+def linie():
     upperlimit = 35
     lowerlimit = 25
     full_white = 52
@@ -24,6 +30,15 @@ def linie(current_Sensor_Val):
         else:
             MSteering.on(speed = -30, steering= -40)
 
+def liniep_controller():
+   current_Sensor_Val =SColor.reflected_light_intensity
+   kp=2.6
+   calibration= 30
+   new=current_Sensor_Val-calibration
+   newsteering= kp * new
+   MSteering.on(speed=-50,steering=newsteering)
+
+    
 
             
     
