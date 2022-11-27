@@ -50,7 +50,7 @@ spkr = Sound()
 init()
 print("Main-Loop")
 while 1:
-    sens_testMode()
+    #sens_testMode()
     light=sens_Color()
     print(light)
     #linie_5(light)

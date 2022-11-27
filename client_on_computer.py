@@ -11,7 +11,9 @@ f = open('plotdata.csv', 'w')
 # create the csv writer
 writer = csv.writer(f)
 writer.writerow("Affen")
-
+print("Affen")
+print("Affen")
+print("Affen")
 
 IPaddress = '192.168.178.54'
 s = socket.socket()
