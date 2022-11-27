@@ -3,6 +3,10 @@ from time import sleep
 #from ev3dev2.button import Button
 
 from linefollower.linefollower import *
+from server_on_ev3 import init,send
+from sensor import *
+from control_system import *
+
 #from linefollower.sensor import *
 #from matplotlib.pyplot import mt
 #import matplotlib.pylab as plt 
@@ -43,8 +47,16 @@ spkr = Sound()
 #spkr.speak('Hallo, ich heisse Roberto Ev und wurde von Simon und Laura programmiert')
 #spkr.speak('Hello, i am Roberto Ev and i was programmed by Simon and Laura')
 
+init()
 print("Main-Loop")
 while 1:
-    liniep_controller()
-    
+    sens_testMode()
+    light=sens_Color()
+    print(light)
+    #linie_5(light)
+    #gyro=sens_Gyro()
+    time=send(light)
+    #timing(time)
+
+
 

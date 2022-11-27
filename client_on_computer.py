@@ -13,7 +13,7 @@ writer = csv.writer(f)
 writer.writerow("Affen")
 
 
-IPaddress = '192.168.178.61'
+IPaddress = '192.168.178.54'
 s = socket.socket()
 s.connect((IPaddress, 12345))
 
@@ -57,8 +57,7 @@ def animate(i):
         plot.ylabel('Distance (%)')
         ax.set_xlim(left=rcvdDatalist[0]-15, right=rcvdDatalist[0]+15)
         #ax.set_ylim(bottom=currenty-50, top=currenty+50)
-        ax.set_ylim(bottom=-500, top= 500)
-        #ax.set_ylim(bottom=0, top=110)
+        ax.set_ylim(bottom=0, top=110)
     else:
         sendData = 'ending process...'
         s.send(sendData.encode())
