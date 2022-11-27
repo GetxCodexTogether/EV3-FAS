@@ -20,10 +20,13 @@ btn = Button()
 
 
 def sens_Color():
-    return S_EV3.reflected_light_intensity
+    print(S_EV3.modes,'\t1',S_EV3.mode,'\t2',S_EV3.num_values,"\t3",S_EV3.value())
+    print(S_EV3.value(0),S_EV3.value(1))
+    return S_EV3.value(0)
 
 def sens_testMode():
-    print(S_EV3.modes,'\t1',S_EV3.mode,'\t2',S_EV3.num_values,"\t3",S_EV3.value())
+    
+    S_EV3._ensure_mode('REF-RAW')
 
 def sens_Gyro():
     return SGyro.rate

@@ -54,6 +54,36 @@ def linie_5(current_Sensor_Val):
         else:
             MSteering.on(speed = speed_n, steering= -40)
 
+def linie_5_mode2(current_Sensor_Val):
+    upperlimit = 550
+    lowerlimit = 480
+    full_white = 440
+    full_black = 580
+    speed_r = -50
+    speed_n = -40
+    speed_k = -30
+    if(lowerlimit <= current_Sensor_Val <= upperlimit):
+        MSteering.on(speed= speed_r,steering=0)
+    else:
+        if(full_white > current_Sensor_Val):
+            MSteering.on(speed = speed_k, steering= -87)
+        elif(full_black < current_Sensor_Val):
+            MSteering.on(speed = speed_k, steering= +87)
+        elif(lowerlimit < current_Sensor_Val):
+            MSteering.on(speed = speed_n, steering= 40)
+        else:
+            MSteering.on(speed = speed_n, steering= -40)
+
+def liniep_controller_mode2(current_Sensor_Val):
+   kp=3.3
+   calibration= 534
+   newsteering= kp* (calibration-current_Sensor_Val)
+   if(newsteering>100):
+        newsteering=100
+   elif(newsteering<-100):
+        newsteering=-100
+   MSteering.on(speed=-20,steering=newsteering)
+
 def liniep_controller(current_Sensor_Val):
    kp=3.3
    calibration= 33

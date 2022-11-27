@@ -49,11 +49,11 @@ spkr = Sound()
 
 init()
 print("Main-Loop")
+sens_testMode()
 while 1:
-    #sens_testMode()
     light=sens_Color()
     print(light)
-    #linie_5(light)
+    liniep_controller_mode2(light)
     #gyro=sens_Gyro()
     time=send(light)
     #timing(time)

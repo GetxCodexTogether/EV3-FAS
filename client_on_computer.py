@@ -15,7 +15,7 @@ print("Affen")
 print("Affen")
 print("Affen")
 
-IPaddress = '192.168.178.54'
+IPaddress = '192.168.178.61'
 s = socket.socket()
 s.connect((IPaddress, 12345))
 
@@ -59,7 +59,7 @@ def animate(i):
         plot.ylabel('Distance (%)')
         ax.set_xlim(left=rcvdDatalist[0]-15, right=rcvdDatalist[0]+15)
         #ax.set_ylim(bottom=currenty-50, top=currenty+50)
-        ax.set_ylim(bottom=0, top=110)
+        ax.set_ylim(bottom=300, top=700)
     else:
         sendData = 'ending process...'
         s.send(sendData.encode())
