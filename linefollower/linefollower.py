@@ -75,14 +75,16 @@ def linie_5_mode2(current_Sensor_Val):
             MSteering.on(speed = speed_n, steering= -40)
 
 def liniep_controller_mode2(current_Sensor_Val):
-   kp=3.3
-   calibration= 534
+   kp=0.8
+   calibration= 530
+   #kp=0.8
+   #calibration= 546
    newsteering= kp* (calibration-current_Sensor_Val)
    if(newsteering>100):
         newsteering=100
    elif(newsteering<-100):
         newsteering=-100
-   MSteering.on(speed=-20,steering=newsteering)
+   MSteering.on(speed=-25,steering=-newsteering)
 
 def liniep_controller(current_Sensor_Val):
    kp=3.3

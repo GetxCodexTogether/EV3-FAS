@@ -25,7 +25,7 @@ def sens_Color():
     return S_EV3.value(0)
 
 def sens_testMode():
-    
+    #S_EV3._ensure_mode()
     S_EV3._ensure_mode('REF-RAW')
 
 def sens_Gyro():
