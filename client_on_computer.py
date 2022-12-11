@@ -15,7 +15,7 @@ print("Affen")
 print("Affen")
 print("Affen")
 
-IPaddress = '192.168.178.61'
+IPaddress = '192.168.178.54'
 s = socket.socket()
 s.connect((IPaddress, 12345))
 

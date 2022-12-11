@@ -3,6 +3,16 @@ from ev3dev2.sensor.lego import ColorSensor, GyroSensor
 
 from ev3dev2.button import Button   # EV3 Button
 from ev3dev2.display import Display 
+from ev3dev2.sensor import INPUT_1
+from ev3dev2.sensor.lego import ColorSensor
+SColor= ColorSensor()
+
+def sensor_init():
+    print("Sensor-Init")
+    
+
+def current_color_value():
+    return SColor.reflected_light_intensity
 
 S_EV3= ColorSensor()
 #SGyro= GyroSensor()

@@ -5,7 +5,6 @@ from time import sleep
 from linefollower.linefollower import *
 from server_on_ev3 import init,send
 from sensor import *
-from control_system import *
 
 #from linefollower.sensor import *
 #from matplotlib.pyplot import mt
@@ -47,17 +46,19 @@ spkr = Sound()
 #spkr.speak('Hallo, ich heisse Roberto Ev und wurde von Simon und Laura programmiert')
 #spkr.speak('Hello, i am Roberto Ev and i was programmed by Simon and Laura')
 
-init()
+#init()
 print("Main-Loop")
 #sens_testMode()
+while True:
+    testMotor()
+
 while 1:
     light=sens_Color()
-    print(light)
+
+    #print(light)
     #straight(light)
-    liniep_controller(light)
-    #gyro=sens_Gyro()
     time=send(light)
+    landr(light, time)
+    #liniepd_controller_mode2(light, time)
+    #gyro=sens_Gyro()
     #timing(time)
-
-
-
