@@ -8,6 +8,7 @@ time_old=0
 
 print("Motor/Sensor-Init")
 MSteering2 = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor)
+MSteering1 = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor)
 #MLeft = LargeMotor(OUTPUT_A)
 #MRight = LargeMotor(OUTPUT_B)
 
@@ -211,6 +212,48 @@ def liniepid_controller(current_Sensor_Val):
    elif(newsteering<-100):
         newsteering=-100
    MSteering2.on(speed=-30,steering=newsteering)
+
+def straight(current_Sensor_Val):
+    MSteering.on(speed=-10,steering=0)
+
+def linie_2_RAW(current_Sensor_Val):
+    limit=534
+    if(limit < current_Sensor_Val):                 # schwarz
+        MSteering.on(speed=-30,steering=-40)
+    elif(limit== current_Sensor_Val):               # optimal: Soll-Wert
+        MSteering.on(speed=-30,steering=0)
+    else:
+        MSteering.on(speed = -30, steering= 40)     # weiß
+
+def linie_3_RAW(current_Sensor_Val):
+    upperlimit=560
+    lowerlimit = 490
+    speed = -30
+    if(lowerlimit <= current_Sensor_Val <= upperlimit):                 # optimaler Bereich
+        MSteering.on(speed= speed,steering=0)
+    elif(upperlimit < current_Sensor_Val):                              # schwarz
+        MSteering.on(speed= speed,steering=-40)
+    else:
+        MSteering.on(speed= speed, steering= 40)                         # weiß
+
+def linie_5_RAW(current_Sensor_Val):
+    full_black = 615
+    upperlimit = 560
+    lowerlimit = 490
+    full_white = 430
+    speed = -30
+    speedslow = -15
+    if(lowerlimit <= current_Sensor_Val <= upperlimit):
+        MSteering.on(speed= speed,steering=0)                           # straight on
+    else:
+        if(full_white > current_Sensor_Val):
+            MSteering.on(speed= speedslow, steering= 90)                # full white
+        elif(full_black < current_Sensor_Val):
+            MSteering.on(speed= speedslow, steering= -90)               # full black
+        elif(lowerlimit > current_Sensor_Val):
+            MSteering.on(speed = speed, steering= 40)                   # more white
+        else:
+            MSteering.on(speed= speed, steering= -40)                   # more black
 
 
 

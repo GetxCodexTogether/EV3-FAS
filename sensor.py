@@ -44,7 +44,7 @@ def sens_Gyro():
 def sens_nxt_Color():
     print(SNxtColor.modes,' \t',SNxtColor.num_values,SNxtColor.mode)
     print(SNxtColor.value())
-    #return SNxtColor.value[6]
+    return SNxtColor.value[6]
 
 #while not btn.any():
     #if brick ? dann def close
