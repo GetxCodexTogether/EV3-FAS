@@ -46,19 +46,20 @@ spkr = Sound()
 #spkr.speak('Hallo, ich heisse Roberto Ev und wurde von Simon und Laura programmiert')
 #spkr.speak('Hello, i am Roberto Ev and i was programmed by Simon and Laura')
 
-#init()
+init()
 print("Main-Loop")
-#sens_testMode()
-while True:
-    testMotor()
+sens_testMode()
+#while True:
+    #testMotor()
 
 while 1:
-    light=sens_Color()
-
+    #light=sens_Color()
+    light=sens_nxt_Color()
+    line_5_RAW(light)
     #print(light)
     #straight(light)
     time=send(light)
-    landr(light, time)
+    #landr(light, time)
     #liniepd_controller_mode2(light, time)
     #gyro=sens_Gyro()
     #timing(time)

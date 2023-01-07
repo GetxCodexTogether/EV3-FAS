@@ -5,19 +5,31 @@ from ev3dev2.button import Button   # EV3 Button
 from ev3dev2.display import Display 
 from ev3dev2.sensor import INPUT_1
 from ev3dev2.sensor.lego import ColorSensor
-SColor= ColorSensor()
+from ev3dev2.sensor.lego import Sensor
+
+#hitechnic sensor
+from ev3dev2.sensor import *
+#from ev3dev2.auto import *
+#chitechnic = Sensor(address='in1', driver_name='ht-nxt-color-v2')
+#chitechnic = Sensor(address=INPUT_1, driver_name='ht-nxt-color-v2')
+#c1= Sensor('in1:i2c1')
+#chitechnic = Sensor(address=INPUT_1, name_pattern='ht-nxt-color-v2')
+
+#SColor= ColorSensor()
 
 def sensor_init():
     print("Sensor-Init")
-    
+
+
 
 def current_color_value():
     return SColor.reflected_light_intensity
 
-S_EV3= ColorSensor()
+#S_EV3= ColorSensor()
 #SGyro= GyroSensor()
 #SGyro.calibrate()
-SNxtColor = ColorSensor()#Sensor(address='in1')
+#SNxtColor = Sensor()
+#SNxtColor = ColorSensor() #Sensor(address='in1')
 
 btn = Button()  
 

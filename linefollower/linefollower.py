@@ -6,6 +6,11 @@ error_old=0
 integral=0
 time_old=0
 
+
+old_time=0
+old_integral=0
+
+
 print("Motor/Sensor-Init")
 MSteering2 = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor)
 MSteering = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor)
@@ -216,7 +221,7 @@ def liniepid_controller(current_Sensor_Val):
 def straight(current_Sensor_Val):
     MSteering.on(speed=-10,steering=0)
 
-def linie_2_RAW(current_Sensor_Val):
+def line_2_RAW(current_Sensor_Val):
     limit=534
     if(limit < current_Sensor_Val):                 # schwarz
         MSteering.on(speed=-30,steering=-40)
@@ -225,7 +230,7 @@ def linie_2_RAW(current_Sensor_Val):
     else:
         MSteering.on(speed = -30, steering= 40)     # weiß
 
-def linie_3_RAW(current_Sensor_Val):
+def line_3_RAW(current_Sensor_Val):
     upperlimit=560
     lowerlimit = 490
     speed = -30
@@ -236,7 +241,7 @@ def linie_3_RAW(current_Sensor_Val):
     else:
         MSteering.on(speed= speed, steering= 40)                         # weiß
 
-def linie_5_RAW(current_Sensor_Val):
+def line_5_RAW(current_Sensor_Val):
     full_black = 615
     upperlimit = 560
     lowerlimit = 490
@@ -255,8 +260,42 @@ def linie_5_RAW(current_Sensor_Val):
         else:
             MSteering.on(speed= speed, steering= -40)                   # more black
 
+def linePID_controller(current_Sensor_Val, current_time):
+    global old_integral
+    global old_time
+    
+    reference = 534
+    kp= 2
+    ki = 0
+    kd= 0
+    deviation = reference-current_Sensor_Val
+    sampling_time= current_time-old_time
+    old_Sensor_Val= current_Sensor_Val
+
+    # P-Controller
+
+    p_controller = kp* deviation 
+
+    # D-controller
+    differential = current_Sensor_Val-old_Sensor_Val
+    d_controller = (kd*differential)/sampling_time
+
+    # I-Controller
+    integral= ki * deviation*sampling_time 
+    i_controller= integral+ old_integral
+    old_integral=integral
 
 
+    # PID-controller
+    newsteering= p_controller + d_controller + i_controller
+
+    # consideration of the limits
+    if(newsteering>100):
+        newsteering=100
+    elif(newsteering<-100):
+        newsteering=-100
+
+    MSteering.on(speed=-30,steering=newsteering)
 
 	
             

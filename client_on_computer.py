@@ -14,8 +14,9 @@ writer.writerow("Affen")
 print("Affen")
 print("Affen")
 print("Affen")
-
-IPaddress = '192.168.178.54'
+#Laura home:
+IPaddress = '192.168.178.33'
+#IPaddress = '192.168.178.54'
 s = socket.socket()
 s.connect((IPaddress, 12345))
 
@@ -56,7 +57,7 @@ def animate(i):
         #PLOT
         plot.scatter(rcvdDatalist[0], rcvdDatalist[1], s = 500, color='green', marker="X")
         plot.xlabel('Time (seconds)')
-        plot.ylabel('Distance (%)')
+        plot.ylabel('Sensor-Wert')
         ax.set_xlim(left=rcvdDatalist[0]-15, right=rcvdDatalist[0]+15)
         #ax.set_ylim(bottom=currenty-50, top=currenty+50)
         ax.set_ylim(bottom=300, top=700)
