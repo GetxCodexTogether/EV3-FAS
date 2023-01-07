@@ -48,13 +48,14 @@ spkr = Sound()
 
 init()
 print("Main-Loop")
-sens_testMode()
+#sens_testMode()
 #while True:
     #testMotor()
 
 while 1:
     #light=sens_Color()
-    light=sens_nxt_Color()
+    light = sens_nxt_Color()
+    
     line_5_RAW(light)
     #print(light)
     #straight(light)

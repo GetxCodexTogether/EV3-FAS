@@ -8,7 +8,7 @@ from ev3dev2.sensor.lego import ColorSensor
 from ev3dev2.sensor.lego import Sensor
 
 #hitechnic sensor
-from ev3dev2.sensor import *
+#from ev3dev2.sensor import *
 #from ev3dev2.auto import *
 #chitechnic = Sensor(address='in1', driver_name='ht-nxt-color-v2')
 #chitechnic = Sensor(address=INPUT_1, driver_name='ht-nxt-color-v2')
@@ -25,11 +25,11 @@ def sensor_init():
 def current_color_value():
     return SColor.reflected_light_intensity
 
-#S_EV3= ColorSensor()
+#S_EV3 = ColorSensor()
 #SGyro= GyroSensor()
 #SGyro.calibrate()
-#SNxtColor = Sensor()
-#SNxtColor = ColorSensor() #Sensor(address='in1')
+sensor_col_ht = Sensor()
+#sensor_col_ht = ColorSensor() #Sensor(address='in1')
 
 btn = Button()  
 
@@ -41,10 +41,10 @@ btn = Button()
     #brick.sound.beep()
 
 
-def sens_Color():
-    print(S_EV3.modes,'\t1',S_EV3.mode,'\t2',S_EV3.num_values,"\t3",S_EV3.value())
-    print(S_EV3.value(0),S_EV3.value(1))
-    return S_EV3.value(0)
+#def sens_Color():
+    #print(S_EV3.modes,'\t1',S_EV3.mode,'\t2',S_EV3.num_values,"\t3",S_EV3.value())
+    #print(S_EV3.value(0),S_EV3.value(1))
+    #return S_EV3.value(0)
 
 def sens_testMode():
     #S_EV3._ensure_mode()
@@ -54,9 +54,10 @@ def sens_Gyro():
     return SGyro.rate
 
 def sens_nxt_Color():
-    print(SNxtColor.modes,' \t',SNxtColor.num_values,SNxtColor.mode)
-    print(SNxtColor.value())
-    return SNxtColor.value[6]
+    print(sensor_col_ht.modes,' \t',sensor_col_ht.num_values,sensor_col_ht.mode)
+    print(sensor_col_ht.value())
+    return sensor_col_ht.value()
+    #return sensor_col_ht.value[6]
 
 #while not btn.any():
     #if brick ? dann def close
