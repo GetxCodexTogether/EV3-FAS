@@ -2,7 +2,6 @@ import socket
 import sys
 import matplotlib.pyplot as plot
 from matplotlib.animation import FuncAnimation
-
 import csv
 
 # open the file in the write mode
@@ -15,7 +14,7 @@ print("Affen")
 print("Affen")
 print("Affen")
 #Laura home:
-IPaddress = '192.168.178.33'
+IPaddress = '192.168.178.70'
 #IPaddress = '192.168.178.54'
 s = socket.socket()
 s.connect((IPaddress, 12345))
@@ -68,17 +67,9 @@ def animate(i):
         sys.exit('Connection ended!')
 
 
-ani = FuncAnimation(plot.gcf(), animate, interval=1)
+ani = FuncAnimation(plot.gcf(), animate, interval=200)
 plot.show()
 
 
 
 
-
-sendData = 'ending process...'
-s.send(sendData.encode())
-s.close()
-sys.exit('Connection ended!')
-
-# close the file
-f.close()
