@@ -26,10 +26,10 @@ def sensor_init():
 def current_color_value():
     return SColor.reflected_light_intensity
 
-#S_EV3 = ColorSensor()
+S_EV3 = ColorSensor()
 #SGyro= GyroSensor()
 #SGyro.calibrate()
-sensor_col_ht = Sensor()
+#sensor_col_ht = Sensor()
 #sensor_col_ht = ColorSensor() #Sensor(address='in1')
 
 btn = Button()  
@@ -42,14 +42,15 @@ btn = Button()
     #brick.sound.beep()
 
 
-#def sens_Color():
-    #print(S_EV3.modes,'\t1',S_EV3.mode,'\t2',S_EV3.num_values,"\t3",S_EV3.value())
-    #print(S_EV3.value(0),S_EV3.value(1))
-    #return S_EV3.value(0)
+def sens_Color():
+    print(S_EV3.modes,'\t1',S_EV3.mode,'\t2',S_EV3.num_values,"\t3",S_EV3.value())
+    print(S_EV3.value(0),S_EV3.value(1))
+    return S_EV3.value(0)
 
 def sens_testMode():
     #S_EV3._ensure_mode()
     S_EV3._ensure_mode('REF-RAW')
+    #sensor_col_ht._ensure_mode('RAW')
 
 def sens_Gyro():
     return SGyro.rate
