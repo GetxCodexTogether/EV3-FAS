@@ -8,7 +8,7 @@ time_old=0
 
 print("Motor/Sensor-Init")
 MSteering2 = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor)
-MSteering1 = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor)
+MSteering = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor)
 #MLeft = LargeMotor(OUTPUT_A)
 #MRight = LargeMotor(OUTPUT_B)
 
