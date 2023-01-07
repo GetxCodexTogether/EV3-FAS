@@ -48,18 +48,18 @@ spkr = Sound()
 
 init()
 print("Main-Loop")
-sens_testMode()
+init_sensor_col_ev3()
 #while True:
     #testMotor()
 
 while 1:
-    light=sens_Color()
+    sensor_col_value=sensor_col_ev3_value()
     #light = sens_nxt_Color()
     
-    line_5_RAW(light)
+    line_5_RAW(sensor_col_value)
     #print(light)
     #straight(light)
-    time=send(light)
+    time=send(sensor_col_value)
     #landr(light, time)
     #liniepd_controller_mode2(light, time)
     #gyro=sens_Gyro()
