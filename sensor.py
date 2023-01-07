@@ -7,6 +7,7 @@ from ev3dev2.sensor import INPUT_1
 from ev3dev2.sensor.lego import ColorSensor
 from ev3dev2.sensor.lego import Sensor
 
+#du bist manchmal süß und die andere Zeit hot
 #hitechnic sensor
 #from ev3dev2.sensor import *
 #from ev3dev2.auto import *
