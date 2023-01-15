@@ -14,7 +14,7 @@ print("Affen")
 print("Affen")
 print("Affen")
 #Laura home:
-IPaddress = '192.168.178.70'
+IPaddress = '192.168.178.33'
 #IPaddress = '192.168.178.54'
 s = socket.socket()
 s.connect((IPaddress, 12345))
@@ -42,8 +42,8 @@ def animate(i):
         plot.plot(x, y)
 
         #EXCEL
-        test=str(rcvdDatalist[0])+","+str(rcvdDatalist[1])
-        writer.writerow(test)
+        # test=str(rcvdDatalist[0])+","+str(rcvdDatalist[1])
+        # writer.writerow(test)
         with open('plotdata.csv', 'a',newline='') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=';',quotechar='|', quoting=csv.QUOTE_MINIMAL)
             filewriter.writerow([float(rcvdDatalist[0]), float(rcvdDatalist[1])])
@@ -67,7 +67,7 @@ def animate(i):
         sys.exit('Connection ended!')
 
 
-ani = FuncAnimation(plot.gcf(), animate, interval=200)
+ani = FuncAnimation(plot.gcf(), animate, interval=10)
 plot.show()
 
 

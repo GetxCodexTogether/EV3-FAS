@@ -12,7 +12,7 @@ def init():
     global to_client
     port = 12345
     client_connection.bind(('', port))
-    client_connection.listen(2)
+    client_connection.listen(1)
     print('Waiting for connection...')
     sound.speak('waiting')
     #brick.display.text('Waiting for connection')
@@ -30,7 +30,7 @@ def init():
 
 def send(value):   
     mystr = str(my_stopwatch.value_secs)+',' +str(value)
-    print(mystr)
+    #print(mystr)
     to_client.send(mystr.encode())
     str(to_client.recv(1024).decode())
     return my_stopwatch.value_secs
