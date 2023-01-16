@@ -1,4 +1,5 @@
 from motor import *
+motor_speed=-15
 
 error_old=0
 integral=0
@@ -61,7 +62,7 @@ def lineP_controller(current_Sensor_Val):
         newsteering=100
     elif(newsteering<-100):
         newsteering=-100
-    motor_movesteering.on(speed=-15,steering=newsteering)
+    motor_movesteering.on(speed=motor_speed,steering=newsteering)
 
 def linePID_controller(current_Sensor_Val, current_time):
     global old_integral
@@ -101,7 +102,7 @@ def linePID_controller(current_Sensor_Val, current_time):
     elif(newsteering<-100):
         newsteering=-100
     print(newsteering, i_controller, p_controller )
-    motor_movesteering.on(speed=-15,steering=newsteering)
+    motor_movesteering.on(speed=motor_speed,steering=newsteering)
 
 def liniepid_control_notime(current_Sensor_Val):
    global error_old
@@ -124,8 +125,15 @@ def liniepid_control_notime(current_Sensor_Val):
         newsteering=100
    elif(newsteering<-100):
         newsteering=-100
-   motor_movesteering.on(speed=-15,steering=newsteering)	
-            
+   motor_movesteering.on(speed=motor_speed,steering=newsteering)	
+
+def susserArsch(time):
+    if time <=3:
+        motor_movesteering.on(speed = motor_speed, steering = 0)
+    else:
+        motor_movesteering.on(speed = motor_speed, steering = 100)
+
+                
     
     
     

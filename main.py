@@ -17,9 +17,16 @@ sensor_col_ev3_init()
 motor_init()
 
 while 1:
+    
     sensor_col_value=sensor_col_ev3_value()
     time=send(sensor_col_value)
-    linePID_controller(sensor_col_value, time)
+    motor_l_speed = motor_l_speed_get()
+    motor_l_count_per_rote = motor_l_count_per_rote_get()
+    time=send(motor_l_speed, motor_l_count_per_rote)
+    susserArsch(time) 
+
+   
+    # linePID_controller(sensor_col_value, time)
    
     
     
