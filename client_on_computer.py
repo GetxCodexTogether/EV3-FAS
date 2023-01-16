@@ -14,7 +14,7 @@ print("Affen")
 print("Affen")
 print("Affen")
 
-IPaddress = '192.168.178.33'
+IPaddress = '192.168.178.45'
 
 s = socket.socket()
 s.connect((IPaddress, 12345))
@@ -32,7 +32,9 @@ def animate(i):
         rcvdDatalist = rcvdData.split(',')
         rcvdDatalist[0] = float(rcvdDatalist[0])
         rcvdDatalist[1] = float(rcvdDatalist[1])
-        
+        rcvdDatalist[2] = float(rcvdDatalist[2])
+        rcvdDatalist[3] = float(rcvdDatalist[3])
+
         x.append(rcvdDatalist[0])
         
         y.append(rcvdDatalist[1])
@@ -42,7 +44,7 @@ def animate(i):
         
         with open('plotdata.csv', 'a',newline='') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=';',quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            filewriter.writerow([float(rcvdDatalist[0]), float(rcvdDatalist[1])])
+            filewriter.writerow([float(rcvdDatalist[0]), float(rcvdDatalist[1]),float(rcvdDatalist[2]),float(rcvdDatalist[3]) ])
 
         # Back to Server
         sendData = 'received data!'

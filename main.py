@@ -22,11 +22,11 @@ while 1:
     time=send(sensor_col_value)
     motor_l_speed = motor_l_speed_get()
     motor_l_count_per_rote = motor_l_count_per_rote_get()
-    time=send(motor_l_speed, motor_l_count_per_rote)
+    time=send(sensor_col_value,motor_l_speed, motor_l_count_per_rote)
     susserArsch(time) 
 
    
-    # linePID_controller(sensor_col_value, time)
+    linePID_controller(sensor_col_value, time)
    
     
     
