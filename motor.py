@@ -1,11 +1,11 @@
-#Init Motor
-from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B #MediumMotor
-#from ev3dev2.motor import SpeedDPS, SpeedRPM, SpeedRPS, SpeedDPM,MoveTank,MoveSteering
+from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, MoveSteering 
 
 def motor_init():
-    global  motor_r,  motor_l  
-    motor_r = LargeMotor(OUTPUT_A) 
-    motor_l = LargeMotor(OUTPUT_B) 
+    global  motor_r,  motor_l
+    motor_l = LargeMotor(OUTPUT_A) 
+    motor_r = LargeMotor(OUTPUT_B)
+
+motor_movesteering = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor) 
 
 def motor_r_speed_get():
     motor_r_speed = motor_r.speed
@@ -22,3 +22,5 @@ def motor_r_count_per_rote_get():
 def motor_l_count_per_rote_get():
     motor_l_count_per_rot = motor_l.count_per_rot
     return motor_l_count_per_rot
+
+

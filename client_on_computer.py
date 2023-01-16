@@ -13,9 +13,9 @@ writer.writerow("Affen")
 print("Affen")
 print("Affen")
 print("Affen")
-#Laura home:
+
 IPaddress = '192.168.178.33'
-#IPaddress = '192.168.178.54'
+
 s = socket.socket()
 s.connect((IPaddress, 12345))
 
@@ -32,18 +32,14 @@ def animate(i):
         rcvdDatalist = rcvdData.split(',')
         rcvdDatalist[0] = float(rcvdDatalist[0])
         rcvdDatalist[1] = float(rcvdDatalist[1])
-        #print(rcvdDatalist[1])
-        #mypoint = "("+str(rcvdDatalist[0])+", "+str(rcvdDatalist[1])+")"
-        # x-axis values
+        
         x.append(rcvdDatalist[0])
-        # y-axis values
+        
         y.append(rcvdDatalist[1])
         plot.cla()
         plot.plot(x, y)
 
-        #EXCEL
-        # test=str(rcvdDatalist[0])+","+str(rcvdDatalist[1])
-        # writer.writerow(test)
+        
         with open('plotdata.csv', 'a',newline='') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=';',quotechar='|', quoting=csv.QUOTE_MINIMAL)
             filewriter.writerow([float(rcvdDatalist[0]), float(rcvdDatalist[1])])
@@ -58,7 +54,6 @@ def animate(i):
         plot.xlabel('Time (seconds)')
         plot.ylabel('Sensor-Wert')
         ax.set_xlim(left=rcvdDatalist[0]-15, right=rcvdDatalist[0]+15)
-        #ax.set_ylim(bottom=currenty-50, top=currenty+50)
         ax.set_ylim(bottom=300, top=700)
     else:
         sendData = 'ending process...'

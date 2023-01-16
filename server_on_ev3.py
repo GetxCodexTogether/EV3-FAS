@@ -30,7 +30,6 @@ def init():
 
 def send(value):   
     mystr = str(my_stopwatch.value_secs)+',' +str(value)
-    #print(mystr)
     to_client.send(mystr.encode())
     str(to_client.recv(1024).decode())
     return my_stopwatch.value_secs
@@ -39,4 +38,4 @@ def close():
     mystr = 'end'
     to_client.send(mystr.encode())
     to_client.close()
-    #sleep(0.7)
+
