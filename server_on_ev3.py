@@ -1,7 +1,6 @@
-#!/usr/bin/env python3
-from ev3dev2.stopwatch import StopWatch
-from ev3dev2.sound import Sound
-from time import sleep
+#from ev3dev2.stopwatch import StopWatch
+#from ev3dev2.sound import Sound
+from pybricks.tools import StopWatch
 import socket
 
 my_stopwatch = StopWatch()

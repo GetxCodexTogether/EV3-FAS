@@ -1,8 +1,9 @@
-#!/usr/bin/env python3
+#!/usr/bin/env pybricks-micropython
 from linefollower.linefollower import *
 from server_on_ev3 import init,send
-from sensor import *
+from sensor import *#
 from motor import *
+from pybricks.ev3devices import *
 
 #from ev3dev2.sound import Sound
 #spkr = Sound()

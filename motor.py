@@ -1,9 +1,11 @@
-from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, MoveSteering 
+#from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, MoveSteering 
+from pybricks.ev3devices import Motor, UltrasonicSensor, ColorSensor
+from pybricks.parameters import Port, Color, ImageFile, SoundFile
 
 def motor_init():
     global  motor_r,  motor_l
-    motor_l = LargeMotor(OUTPUT_A) 
-    motor_r = LargeMotor(OUTPUT_B)
+    motor_l = Motor(Port.A) 
+    motor_r = Motor(Port.B)
 
 motor_movesteering = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor) 
 
