@@ -5,7 +5,7 @@ import socket
 
 my_stopwatch = StopWatch()
 client_connection = socket.socket()
-sound = Sound()
+#sound = Sound()
 
 def init():
     global to_client
@@ -13,11 +13,11 @@ def init():
     client_connection.bind(('', port))
     client_connection.listen(1)
     print('Waiting for connection...')
-    sound.speak('waiting')
+#    sound.speak('waiting')
     #brick.display.text('Waiting for connection')
     #brick.display.text('    with computer...')
     to_client, addr = client_connection.accept()
-    sound.speak('connected')
+#    sound.speak('connected')
     #brick.sound.beep(1500, 200)
     #brick.display.clear()
     #brick.display.text('Connection successful!')
