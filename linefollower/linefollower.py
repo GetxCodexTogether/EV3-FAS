@@ -10,27 +10,29 @@ old_time=0
 old_integral=0
 
 def straight():
-    motor_movesteering.on(speed=-10,steering=0)
+    a=a
+   # motor_movesteering.on(speed=-10,steering=0)
 
 def line_2_RAW(current_Sensor_Val):
     limit=534
-    if(limit < current_Sensor_Val):                 # schwarz
-        motor_movesteering.on(speed=-30,steering=-40)
-    elif(limit== current_Sensor_Val):               # optimal: Soll-Wert
-        motor_movesteering.on(speed=-30,steering=0)
-    else:
-        motor_movesteering.on(speed = -30, steering= 40)     # weiß
+    a=current_Sensor_Val
+    #if(limit < current_Sensor_Val):                 # schwarz
+    #     motor_movesteering.on(speed=-30,steering=-40)
+    # elif(limit== current_Sensor_Val):               # optimal: Soll-Wert
+    #     motor_movesteering.on(speed=-30,steering=0)
+    # else:
+    #     motor_movesteering.on(speed = -30, steering= 40)     # weiß
 
 def line_3_RAW(current_Sensor_Val):
     upperlimit=560
     lowerlimit = 490
     speed = -30
-    if(lowerlimit <= current_Sensor_Val <= upperlimit):                 # optimaler Bereich
-        motor_movesteering.on(speed= speed,steering=0)
-    elif(upperlimit < current_Sensor_Val):                              # schwarz
-        motor_movesteering.on(speed= speed,steering=-40)
-    else:
-        motor_movesteering.on(speed= speed, steering= 40)                         # weiß
+    # if(lowerlimit <= current_Sensor_Val <= upperlimit):                 # optimaler Bereich
+    #     motor_movesteering.on(speed= speed,steering=0)
+    # elif(upperlimit < current_Sensor_Val):                              # schwarz
+    #     motor_movesteering.on(speed= speed,steering=-40)
+    # else:
+    #     motor_movesteering.on(speed= speed, steering= 40)                         # weiß
 
 def line_5_RAW(current_Sensor_Val):
     full_black = 615
@@ -39,17 +41,17 @@ def line_5_RAW(current_Sensor_Val):
     full_white = 430
     speed = -15
     speedslow = -15
-    if(lowerlimit <= current_Sensor_Val <= upperlimit):
-        motor_movesteering.on(speed= speed,steering=0)                           # straight on
-    else:
-        if(full_white > current_Sensor_Val):
-            motor_movesteering.on(speed= speedslow, steering= 90)                # full white
-        elif(full_black < current_Sensor_Val):
-            motor_movesteering.on(speed= speedslow, steering= -90)               # full black
-        elif(lowerlimit > current_Sensor_Val):
-            motor_movesteering.on(speed = speed, steering= 40)                   # more white
-        else:
-            motor_movesteering.on(speed= speed, steering= -40)                   # more black
+    # if(lowerlimit <= current_Sensor_Val <= upperlimit):
+    #     motor_movesteering.on(speed= speed,steering=0)                           # straight on
+    # else:
+    #     if(full_white > current_Sensor_Val):
+    #         motor_movesteering.on(speed= speedslow, steering= 90)                # full white
+    #     elif(full_black < current_Sensor_Val):
+    #         motor_movesteering.on(speed= speedslow, steering= -90)               # full black
+    #     elif(lowerlimit > current_Sensor_Val):
+    #         motor_movesteering.on(speed = speed, steering= 40)                   # more white
+    #     else:
+    #         motor_movesteering.on(speed= speed, steering= -40)                   # more black
 
 def lineP_controller(current_Sensor_Val):
     kp = 0.2
@@ -58,11 +60,11 @@ def lineP_controller(current_Sensor_Val):
     newsteering = kp * deviation
 
      # consideration of the limits
-    if(newsteering>100):
-        newsteering=100
-    elif(newsteering<-100):
-        newsteering=-100
-    motor_movesteering.on(speed=motor_speed,steering=newsteering)
+    # if(newsteering>100):
+    #     newsteering=100
+    # elif(newsteering<-100):
+    #     newsteering=-100
+    # motor_movesteering.on(speed=motor_speed,steering=newsteering)
 
 def linePID_controller(current_Sensor_Val, current_time):
     global old_integral
@@ -102,7 +104,7 @@ def linePID_controller(current_Sensor_Val, current_time):
     elif(newsteering<-100):
         newsteering=-100
     print(newsteering, i_controller, p_controller )
-    motor_movesteering.on(speed=motor_speed,steering=newsteering)
+    #motor_movesteering.on(speed=motor_speed,steering=newsteering)
 
 def liniepid_control_notime(current_Sensor_Val):
    global error_old
@@ -125,16 +127,18 @@ def liniepid_control_notime(current_Sensor_Val):
         newsteering=100
    elif(newsteering<-100):
         newsteering=-100
-   motor_movesteering.on(speed=motor_speed,steering=newsteering)	
+   #motor_movesteering.on(speed=motor_speed,steering=newsteering)	
 
 def susserArsch(time):
-    if time <=3:
-        motor_movesteering.on(speed = motor_speed, steering = 0)
-    else:
-        motor_movesteering.on(speed = motor_speed, steering = 100)
+    a=a
+    #if time <=3:
+        #motor_movesteering.on(speed = motor_speed, steering = 0)
+    #else:
+        #motor_movesteering.on(speed = motor_speed, steering = 100)
 
-                
-    
+def geradeaus():
+    motor_l.run(300)
+    motor_r.run(300)
     
     
 

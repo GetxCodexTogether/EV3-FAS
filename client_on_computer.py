@@ -14,7 +14,7 @@ print("Affen")
 print("Affen")
 print("Affen")
 
-IPaddress = '192.168.178.45'
+IPaddress = '192.168.178.33'
 
 s = socket.socket()
 s.connect((IPaddress, 12345))
@@ -64,7 +64,7 @@ def animate(i):
         sys.exit('Connection ended!')
 
 
-ani = FuncAnimation(plot.gcf(), animate, interval=10)
+ani = FuncAnimation(plot.gcf(), animate, interval=1)
 plot.show()
 
 
