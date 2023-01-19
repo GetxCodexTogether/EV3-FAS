@@ -1,9 +1,10 @@
 from ev3dev2.motor import LargeMotor, OUTPUT_A, OUTPUT_B, MoveSteering 
+import ev3fast as ev3
 
 def motor_init():
     global  motor_r,  motor_l
-    motor_l = LargeMotor(OUTPUT_A) 
-    motor_r = LargeMotor(OUTPUT_B)
+    motor_l = ev3.LargeMotor(OUTPUT_A) 
+    motor_r = ev3.LargeMotor(OUTPUT_B)
 
 motor_movesteering = MoveSteering(left_motor_port=OUTPUT_A,right_motor_port=OUTPUT_B,motor_class=LargeMotor) 
 
