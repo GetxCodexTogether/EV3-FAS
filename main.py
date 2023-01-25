@@ -15,14 +15,15 @@ init()
 print("Main-Loop")
 sensor_col_ev3_init()
 motor_init()
-
+i_controller =0
 while 1:
     
     sensor_col_value=sensor_col_ev3_value()
-    #time=send(sensor_col_value)
-    motor_l_speed = motor_r_speed_get()
+    motor_r_speed = motor_r_speed_get()
     #motor_l_count_per_rote = motor_l_count_per_rote_get()
-    time=send(sensor_col_value,motor_l_speed)
+    #time=send(sensor_col_value,motor_r_speed)
+    time=send(motor_r_speed)
+    #i_controller=liniepid_control_notime(sensor_col_value)
     susserArsch(time) 
     #linePID_controller(sensor_col_value, time)
    

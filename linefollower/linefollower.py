@@ -1,10 +1,11 @@
 from motor import *
-motor_speed=-15
+motor_speed=-18
 
 error_old=0
 integral=0
 time_old=0
 sum_deviation = 0
+old_deviation=0
 
 old_time=0
 old_integral=0
@@ -52,7 +53,7 @@ def line_5_RAW(current_Sensor_Val):
             motor_movesteering.on(speed= speed, steering= -40)                   # more black
 
 def lineP_controller(current_Sensor_Val):
-    kp = 0.2
+    kp = 0.49 # 0.5 bei v=-15
     reference = 475
     deviation = reference-current_Sensor_Val
     newsteering = kp * deviation
@@ -68,17 +69,17 @@ def linePID_controller(current_Sensor_Val, current_time):
     global old_integral
     global old_time
     global sum_deviation
+    global old_deviation
 
     reference = 475 #534 #31
-    kp = 0.3 #0.8958 # 0.2
-    ki = 0.023
-    kd = 1.2 #1.8
+    kp = 0.294           # 0.49       #0.8958 # 0.2
+    ki = 0.0533367          #0.023
+    kd = 0.4051          #1.2 #1.8
     deviation = reference-current_Sensor_Val
     sampling_time= current_time-old_time
     old_Sensor_Val= current_Sensor_Val
 
     # P-Controller
-
     p_controller = kp * deviation 
 
     # D-controller
@@ -87,11 +88,15 @@ def linePID_controller(current_Sensor_Val, current_time):
 
     # I-Controller
     integral= ki * deviation * sampling_time 
+    if(deviation==0):
+        old_integral=0
+    elif(((deviation>0) and  (old_deviation<0)) or((deviation<0) and  (old_deviation>0))):
+        old_integral=0
     i_controller = integral+ old_integral
     old_integral = integral
     #sum_deviation= sum_deviation + deviation
     #i_controller = ki * sampling_time* sum_deviation 
-    
+    old_deviation=deviation
 
     # PID-controller
     newsteering= p_controller + d_controller + i_controller
@@ -104,19 +109,22 @@ def linePID_controller(current_Sensor_Val, current_time):
     print(newsteering, i_controller, p_controller )
     motor_movesteering.on(speed=motor_speed,steering=newsteering)
 
+    return i_controller
+
 def liniepid_control_notime(current_Sensor_Val):
    global error_old
    global integral
-   kp = 0.8958
-   ki = 2.3268
-   kd = 0.08622
-   calibration= 534
+   kp = 0.294              # 0.49       #0.8958 # 0.2
+   ki = 0.0533367          # 0.023
+   kd = 0.4051 
+   calibration= 475
 
    error=calibration-current_Sensor_Val
 
    differential= error - error_old
 
-   integral= integral +error
+   integral= 0.66*integral +error
+   old_integral
 
    error_old=error
    newsteering= kp* error+ kd*differential+ ki*integral
@@ -125,15 +133,19 @@ def liniepid_control_notime(current_Sensor_Val):
         newsteering=100
    elif(newsteering<-100):
         newsteering=-100
-   motor_movesteering.on(speed=motor_speed,steering=newsteering)	
+   motor_movesteering.on(speed=motor_speed,steering=newsteering)
+
+   return integral	
 
 def susserArsch(time):
     if time <=3:
         motor_movesteering.on(speed = motor_speed, steering = 0)
+    elif time <6:
+        motor_movesteering.on(speed = motor_speed, steering = 50)
     else:
-        motor_movesteering.on(speed = motor_speed, steering = 100)
+        motor_movesteering.on(speed = motor_speed, steering = -30)
 
-                
+    
     
     
     
