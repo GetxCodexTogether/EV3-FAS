@@ -32,6 +32,7 @@ def send(sensor_col_value=0):
     mystr = str(my_stopwatch.value_secs)+',' +str(sensor_col_value) #+','+str(motor_l_speed)
     to_client.send(mystr.encode())
     str(to_client.recv(1024).decode())
+    print(my_stopwatch.value_secs)
     return my_stopwatch.value_secs
     
 def close():
