@@ -20,7 +20,6 @@ motor_init()
 my_stopwatch.start()
 i_controller =0
 while 1:
-    
     sensor_col_value=sensor_col_ev3_value()
     #motor_r_speed = motor_r_speed_get()
     #motor_l_count_per_rote = motor_l_count_per_rote_get()
@@ -33,10 +32,10 @@ while 1:
     #linePID_controller(sensor_col_value, time)
     #liniepid_control_withtimetest(sensor_col_value,time)
     liniepid_control_notime(sensor_col_value)
-    print(my_stopwatch.value_secs)
-    i=0
-    while(i<560):
-        i+=1
+    #print(my_stopwatch.value_secs)
+    # i=0
+    # while(i<560):
+    #     i+=1
     #print(sensor_col_value)
     #print(sensor_col_value)
     #lineP_controller(sensor_col_value)

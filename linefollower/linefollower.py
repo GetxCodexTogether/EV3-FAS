@@ -129,9 +129,9 @@ def linePID_controller(current_Sensor_Val, current_time):
 def liniepid_control_notime(current_Sensor_Val):
    global error_old
    global integral
-   kp = 0.294              # 0.49       #0.8958 # 0.2
-   ki = 0.0533367          # 0.023
-   kd = 0.4051 
+   kp = 0.282#0.294              # 0.49       #0.8958 # 0.2
+   ki = 0.0511#0.0533367          # 0.023
+   kd =0.3886# 0.4051 
    calibration= 475
 
    error=calibration-current_Sensor_Val
@@ -139,8 +139,6 @@ def liniepid_control_notime(current_Sensor_Val):
    differential= error - error_old
 
    integral= 0.66*integral +error
-
-   
 
    error_old=error
    newsteering= kp* error+ kd*differential+ ki*integral
