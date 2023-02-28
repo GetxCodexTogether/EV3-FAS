@@ -12,7 +12,7 @@ print("Affen")
 print("Affen")
 print("Affen")
 
-IPaddress = '192.168.178.33'
+IPaddress = '192.168.178.108'
 s = socket.socket()
 s.connect((IPaddress, 12345))
 #rcvdData = 'None'
